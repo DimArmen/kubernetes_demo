@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello
+spec:
+  ttlSecondsAfterFinished: 100
+  template:
+    spec:
+      containers:
+      - name: hello-python
+        image: busybox
+        command: ["echo", "hello"]
+      restartPolicy: Never
+  completions: 6
+  backoffLimit: 4
+

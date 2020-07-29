@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: hello-kubernetes
+  labels:
+    app: hello-kubernetes
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-kubernetes
+  template:
+    metadata:
+      labels:
+        app: hello-kubernetes
+    spec:
+      containers:
+      - name: hello-kubernetes
+        image: paulbouwer/hello-kubernetes:1.8
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:  hello-kubernetes
+spec:
+  selector:
+    app:  hello-kubernetes
+  type:  NodePort
+  ports:
+  - name:  name-of-the-port
+    port:  8082
+    targetPort:  8080
+    nodePort:  32002
