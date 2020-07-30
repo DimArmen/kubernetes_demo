@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: hello
+  name: sleep
 spec:
   ttlSecondsAfterFinished: 100
   template:
@@ -9,8 +9,9 @@ spec:
       containers:
       - name: sleep-world
         image: busybox
-        command: ["sleep", "20"]
+        args: ["20"]
+        command: ["sleep"]
       restartPolicy: Never
-  completions: 20
+  completions: 10
   backoffLimit: 3
   parallelism: 5
