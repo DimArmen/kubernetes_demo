@@ -7,10 +7,10 @@ spec:
   template:
     spec:
       containers:
-      - name: hello-python
+      - name: sleep-world
         image: busybox
-        command: ["echo", "hello"]
+        command: ["sleep", "20"]
       restartPolicy: Never
-  completions: 6
-  backoffLimit: 4
-
+  completions: 20
+  backoffLimit: 3
+  parallelism: 5

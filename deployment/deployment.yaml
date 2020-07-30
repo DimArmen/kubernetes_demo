@@ -5,7 +5,7 @@ metadata:
   labels:
     name:  hello-kubernetes
 spec:
-  revisionHistoryLimit: 10
+  revisionHistoryLimit: 3
   minReadySeconds: 10
   progressDeadlineSeconds: 30
   replicas: 5
@@ -23,9 +23,9 @@ spec:
         name:  hello-kubernetes
     spec:
       containers:
-      - image:  paulbouwer/hello-kubernetes:1.8
-        name:  hello-kubernetes-new
+      - image:  paulbower/hello-kubernetes:1.18
+        name:  hello-kubernetes
         ports:
-        - containerPort:  8080
+        - containerPort:  80
           name:  http
       restartPolicy: Always
