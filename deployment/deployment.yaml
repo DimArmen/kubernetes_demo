@@ -23,9 +23,9 @@ spec:
         name:  hello-kubernetes
     spec:
       containers:
-      - image:  paulbower/hello-kubernetes:1.18
+      - image:  paulbouwer/hello-kubernetes:1.6
         name:  hello-kubernetes
         ports:
-        - containerPort:  80
+        - containerPort:  8080
           name:  http
       restartPolicy: Always
