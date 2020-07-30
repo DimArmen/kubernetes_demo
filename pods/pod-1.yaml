@@ -6,8 +6,8 @@ metadata:
     app: web-1
 spec:
   containers:
-    - name: web
-      image: nginx:latest
+    - name: web-first
+      image: nginx:1.19.1
       ports:
         - name: web
           containerPort: 80

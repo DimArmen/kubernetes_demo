@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  hello-kubernetes
+  labels:
+    name:  hello-kubernetes
+spec:
+  revisionHistoryLimit: 10
+  minReadySeconds: 10
+  progressDeadlineSeconds: 30
+  replicas: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      name: hello-kubernetes
+  template:
+    metadata:
+      labels:
+        name:  hello-kubernetes
+    spec:
+      containers:
+      - image:  paulbouwer/hello-kubernetes:1.8
+        name:  hello-kubernetes-new
+        ports:
+        - containerPort:  8080
+          name:  http
+      restartPolicy: Always
